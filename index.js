@@ -44,4 +44,4 @@ BrowserAnalytics.prototype.sendMetrics = function () {
     });
 }
 
-module.exports.browserAnalytics = browserAnalytics;
+module.exports.BrowserAnalytics = BrowserAnalytics;
