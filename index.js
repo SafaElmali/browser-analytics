@@ -32,7 +32,7 @@ BrowserAnalytics.prototype.getTimeToFirstByteMetric = function () {
 
 // Send Metrics with built-in fetch api
 BrowserAnalytics.prototype.sendMetrics = function () {
-    fetch(this.API_ENDPOINT, {
+    return fetch(this.API_ENDPOINT, {
         method: 'POST',
         headers: {
             'Accept-type': 'application/json',
