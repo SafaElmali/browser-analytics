@@ -7,23 +7,23 @@ function browserAnalytics(options) {
     this.API_ENDPOINT = options.apiEndpoint;
     this.performanceEntry = performance.getEntriesByType('navigation')[0];
 
-    getFirstContentfulPaintMetric() {
+    function getFirstContentfulPaintMetric() {
         throw new Error('Method not implemented.');
     }
-    getDomLoadMetric() {
+    function getDomLoadMetric() {
         throw new Error('Method not implemented.');
     }
-    getWindowLoadMetric() {
+    function getWindowLoadMetric() {
         throw new Error('Method not implemented.');
     }
 
     // Measure TTFB (Time To First Byte)
-    getTimeToFirstByteMetric() {
+    function getTimeToFirstByteMetric() {
         return this.performanceEntry.responseStart - this.performanceEntry.requestStart;
     }
 
     // Send Metrics with built-in fetch api
-    sendMetrics() {
+    function sendMetrics() {
         fetch(this.API_ENDPOINT, {
             method: 'POST',
             headers: {
