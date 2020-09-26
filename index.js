@@ -2,39 +2,46 @@
 https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming
 */
 
-// options parameter 
-function browserAnalytics(options) {
-    this.API_ENDPOINT = options.apiEndpoint;
-    this.performanceEntry = performance.getEntriesByType('navigation')[0];
+// options as an object
+// for now it's only get api endpoint 
+function BrowserAnalytics(options) {
+    if (options.apiEndpoint === null) {
+        console.log("You should pass an endpoint to send metrics!");
+    } else {
+        this.API_ENDPOINT = options.apiEndpoint;
+        this.performanceEntry = performance.getEntriesByType('navigation')[0];
+    }
+}
 
-    function getFirstContentfulPaintMetric() {
-        throw new Error('Method not implemented.');
-    }
-    function getDomLoadMetric() {
-        throw new Error('Method not implemented.');
-    }
-    function getWindowLoadMetric() {
-        throw new Error('Method not implemented.');
-    }
+BrowserAnalytics.prototype.getFirstContentfulPaintMetric = function () {
+    throw new Error('Method not implemented.');
+}
 
-    // Measure TTFB (Time To First Byte)
-    function getTimeToFirstByteMetric() {
-        return this.performanceEntry.responseStart - this.performanceEntry.requestStart;
-    }
+BrowserAnalytics.prototype.getDomLoadMetric = function () {
+    throw new Error('Method not implemented.');
+}
 
-    // Send Metrics with built-in fetch api
-    function sendMetrics() {
-        fetch(this.API_ENDPOINT, {
-            method: 'POST',
-            headers: {
-                'Accept-type': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                ttfb: this.getTimeToFirstByteMetric(),
-            }),
-        });
-    }
+BrowserAnalytics.prototype.getWindowLoadMetric = function () {
+    throw new Error('Method not implemented.');
+}
+
+// Measure TTFB (Time To First Byte)
+BrowserAnalytics.prototype.getTimeToFirstByteMetric = function () {
+    return this.performanceEntry.responseStart - this.performanceEntry.requestStart;
+}
+
+// Send Metrics with built-in fetch api
+BrowserAnalytics.prototype.sendMetrics = function () {
+    fetch(this.API_ENDPOINT, {
+        method: 'POST',
+        headers: {
+            'Accept-type': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            ttfb: this.getTimeToFirstByteMetric(),
+        }),
+    });
 }
 
 module.exports.browserAnalytics = browserAnalytics;
