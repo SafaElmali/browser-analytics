@@ -3,7 +3,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming
 */
 
 // options as an object
-// for now it's only get api endpoint 
+// for now it's only gets api endpoint 
 function BrowserAnalytics(options) {
     if (options.apiEndpoint === null) {
         console.log("You should pass an endpoint to send metrics!");
@@ -14,9 +14,10 @@ function BrowserAnalytics(options) {
 }
 
 BrowserAnalytics.prototype.getFirstContentfulPaintMetric = function () {
-    throw new Error('Method not implemented.');
+    return performance.getEntriesByName('first-contentful-paint')[0].startTime;
 }
 
+// https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/domLoading
 BrowserAnalytics.prototype.getDomLoadMetric = function () {
     throw new Error('Method not implemented.');
 }
@@ -40,6 +41,7 @@ BrowserAnalytics.prototype.sendMetrics = function () {
         },
         body: JSON.stringify({
             ttfb: this.getTimeToFirstByteMetric(),
+            fcp: this.getFirstContentfulPaintMetric(),
         }),
     });
 }
