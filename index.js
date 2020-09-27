@@ -41,7 +41,6 @@ BrowserAnalytics.prototype.sendMetrics = function () {
         },
         body: JSON.stringify({
             ttfb: this.getTimeToFirstByteMetric(),
-            wl: this.getWindowLoadMetric()
         }),
     });
 }
