@@ -14,7 +14,7 @@ function BrowserAnalytics(options) {
 }
 
 BrowserAnalytics.prototype.getFirstContentfulPaintMetric = function () {
-    return performance.getEntriesByName('first-contentful-paint')[0].startTime;
+    throw new Error('Method not implemented.');
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/domLoading
@@ -41,7 +41,7 @@ BrowserAnalytics.prototype.sendMetrics = function () {
         },
         body: JSON.stringify({
             ttfb: this.getTimeToFirstByteMetric(),
-            fcp: this.getFirstContentfulPaintMetric(),
+            wl: this.getWindowLoadMetric()
         }),
     });
 }
