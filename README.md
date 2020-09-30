@@ -5,7 +5,7 @@
 [![NPM Version][npm-version-image]][npm-url]
 [![NPM Downloads][npm-downloads-image]][npm-url]
 
-<i> browser-analytics help you to send some browser metrics to your API from UI </i>
+<i> browser-analytics help you to send some browser metrics to your server from client app </i>
 
 </div>
 
