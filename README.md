@@ -2,6 +2,9 @@
   
 # browser-analytics
 
+[![NPM Version][npm-version-image]][npm-url]
+[![NPM Downloads][npm-downloads-image]][npm-url]
+
 <i> browser-analytics help you to send some browser metrics to your API from UI </i>
 
 </div>
@@ -15,9 +18,6 @@
 <h3>Completed ✅ </h3>
 
 - [x] Time To First Byte
-
-[![NPM Version][npm-version-image]][npm-url]
-[![NPM Downloads][npm-downloads-image]][npm-url]
 
 ## Installation
 
