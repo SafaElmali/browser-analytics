@@ -22,7 +22,7 @@ BrowserAnalytics.prototype.getFirstContentfulPaintMetric = function () {
 // Measure Dom Loading
 // reference: https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/domLoading
 BrowserAnalytics.prototype.getDomLoadMetric = function () {
-    return this.performanceTiming.domLoading;
+    return this.time.domLoading;
 }
 
 // Measure Window Load
