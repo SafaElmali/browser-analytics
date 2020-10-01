@@ -10,6 +10,7 @@ function BrowserAnalytics(options) {
     } else {
         this.API_ENDPOINT = options.apiEndpoint;
         this.time = window.performance.timing;
+
     }
 }
 
@@ -37,6 +38,12 @@ BrowserAnalytics.prototype.getTimeToFirstByteMetric = function () {
     return this.time.responseStart - this.time.navigationStart;
 }
 
+BrowserAnalytics.prototype.init = function () {
+    setTimeout(() => {
+        return this.sendMetrics();
+    }, 500)
+}
+
 // Send Metrics with built-in fetch api
 BrowserAnalytics.prototype.sendMetrics = function () {
     return fetch(this.API_ENDPOINT, {
@@ -54,4 +61,4 @@ BrowserAnalytics.prototype.sendMetrics = function () {
     });
 }
 
-module.exports.BrowserAnalytics = BrowserAnalytics;
+module.exports.default = BrowserAnalytics;
