@@ -14,13 +14,14 @@ function BrowserAnalytics(options) {
 }
 
 //Measure TFCP (Time of First Contentful Paint)
+// reference: https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming
 BrowserAnalytics.prototype.getFirstContentfulPaintMetric = function () {
     //throw new Error('Method not implemented.');
     return window.performance.getEntriesByType("paint")[1].startTime;
 }
 
 // Measure TTLD (Time To Load DOM)
-// https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/domLoading
+// reference: https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/domLoading
 BrowserAnalytics.prototype.getDomLoadMetric = function () {
     //throw new Error('Method not implemented.');
     return performanceTiming.domLoading;
