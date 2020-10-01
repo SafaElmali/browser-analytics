@@ -11,13 +11,13 @@
 
 <h3>In Progress ⌛</h3>
 
-- [ ] First Contentful Paint (FCP)
-- [ ] Dom Load 
-- [ ] Window Load
 
 <h3>Completed ✅ </h3>
 
 - [x] Time To First Byte
+- [x] First Contentful Paint (FCP)
+- [x] Dom Load 
+- [x] Window Load
 
 ## Installation
 
@@ -29,18 +29,33 @@ $ npm install browser-analytics
 [npm-url]: https://www.npmjs.com/package/browser-analytics
 [npm-version-image]: https://badgen.net/npm/v/browser-analytics
 
-## UI Example
+## Example
 
 <!-- eslint-disable no-unused-vars -->
+
+### Client Side 
 
 ```js
 import { BrowserAnalytics } from 'browser-analytics';
 
 ....
 useEffect(() => {
-  const metric = new BrowserAnalytics({ apiEndpoint: "<your_api_endpoint>" }) 
-  const pendingRes = metric.sendMetrics(); // Returns a Promise
-  pendingRes.then(result => result.json()).then(formattedRes=>console.log(formattedRes));
+ const metric = new BrowserAnalytics({ apiEndpoint: "http://localhost:3001/metrics" })
+ const pendingRes = metric.sendMetrics();
+ pendingRes.then(result => result.json()).then(formattedRes=>console.log(formattedRes));
 })
 ....        
+```
+### Server Side
+
+```js
+metricsRouter.post('/metrics', function (req, res) {
+    const metrics = req.body;
+  
+         // do some stuff
+            ...
+            res.send(metrics);
+        }
+    });
+})
 ```

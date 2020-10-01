@@ -13,17 +13,26 @@ function BrowserAnalytics(options) {
     }
 }
 
+//Measure TFCP (Time of First Contentful Paint)
+// reference: https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming
 BrowserAnalytics.prototype.getFirstContentfulPaintMetric = function () {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
+    return window.performance.getEntriesByType("paint")[1].startTime;
 }
 
-// https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/domLoading
+// Measure TTLD (Time To Load DOM)
+// reference: https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming/domLoading
 BrowserAnalytics.prototype.getDomLoadMetric = function () {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
+    return performanceTiming.domLoading;
 }
 
+
+// Measure TTLW (Time To Load Window)
+// reference:https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings
 BrowserAnalytics.prototype.getWindowLoadMetric = function () {
-    throw new Error('Method not implemented.');
+    //throw new Error('Method not implemented.');
+    return this.time.loadEventStart-this.time.navigationStart;
 }
 
 // Measure TTFB (Time To First Byte)
@@ -42,6 +51,9 @@ BrowserAnalytics.prototype.sendMetrics = function () {
         },
         body: JSON.stringify({
             ttfb: this.getTimeToFirstByteMetric(),
+            ttlw: this.getWindowLoadMetric(),
+            ttld: this.getDomLoadMetric(),
+            FCPM: this.getFirstContentfulPaintMetric()
         }),
     });
 }
