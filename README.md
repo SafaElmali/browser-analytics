@@ -29,7 +29,7 @@ $ npm install browser-analytics
 [npm-url]: https://www.npmjs.com/package/browser-analytics
 [npm-version-image]: https://badgen.net/npm/v/browser-analytics
 
-## UI Example
+## Example
 
 <!-- eslint-disable no-unused-vars -->
 
@@ -38,9 +38,9 @@ import { BrowserAnalytics } from 'browser-analytics';
 
 ....
 useEffect(() => {
-  const metric = new BrowserAnalytics({ apiEndpoint: "<your_api_endpoint>" }) 
-  const pendingRes = metric.sendMetrics(); // Returns a Promise
-  pendingRes.then(result => result.json()).then(formattedRes=>console.log(formattedRes));
+ const metric = new BrowserAnalytics({ apiEndpoint: "http://localhost:3001/metrics" })
+ const pendingRes = metric.sendMetrics();
+ pendingRes.then(result => result.json()).then(formattedRes=>console.log(formattedRes));
 })
 ....        
 ```
