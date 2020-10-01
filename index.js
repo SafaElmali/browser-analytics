@@ -61,4 +61,4 @@ BrowserAnalytics.prototype.sendMetrics = function () {
     });
 }
 
-module.exports.default = BrowserAnalytics;
+module.exports = BrowserAnalytics;
