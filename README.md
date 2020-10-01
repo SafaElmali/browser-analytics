@@ -33,6 +33,8 @@ $ npm install browser-analytics
 
 <!-- eslint-disable no-unused-vars -->
 
+### Client Side 
+
 ```js
 import { BrowserAnalytics } from 'browser-analytics';
 
@@ -43,4 +45,17 @@ useEffect(() => {
  pendingRes.then(result => result.json()).then(formattedRes=>console.log(formattedRes));
 })
 ....        
+```
+### Server Side
+
+```js
+metricsRouter.post('/metrics', function (req, res) {
+    const metrics = req.body;
+  
+         // do some stuff
+            ...
+            res.send(metrics);
+        }
+    });
+})
 ```
