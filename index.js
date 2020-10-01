@@ -39,9 +39,8 @@ BrowserAnalytics.prototype.getTimeToFirstByteMetric = function () {
 }
 
 BrowserAnalytics.prototype.init = function () {
-    setTimeout(() => {
-        return this.sendMetrics();
-    }, 500)
+    if (this.getFirstContentfulPaintMetric() === null || this.getFirstContentfulPaintMetric() === undefined) setTimeout(() => this.init, 500);
+    else this.sendMetrics();
 }
 
 // Send Metrics with built-in fetch api
