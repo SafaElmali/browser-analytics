@@ -43,7 +43,7 @@ BrowserAnalytics.prototype.getTimeToFirstByteMetric = function () {
 }
 
 BrowserAnalytics.prototype.init = function () {
-    if (this.getFirstContentfulPaintMetric() === null || this.getFirstContentfulPaintMetric() === undefined) setTimeout(() => this.init, 500);
+    if (this.getFirstContentfulPaintMetric() === null || this.getFirstContentfulPaintMetric() === undefined) setTimeout(() => this.init(), 500);
     else this.sendMetrics();
 }
 
