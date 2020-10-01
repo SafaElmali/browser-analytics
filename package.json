@@ -1,6 +1,6 @@
 {
   "name": "browser-analytics",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "Get browser metrics for your app",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
