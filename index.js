@@ -10,18 +10,15 @@ function BrowserAnalytics(options) {
     } else {
         this.API_ENDPOINT = options.apiEndpoint;
         this.time = window.performance.timing;
-
     }
 }
 
 // Measure FCP (First Contentful Paint)
 // reference: https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming
 BrowserAnalytics.prototype.getFirstContentfulPaintMetric = function () {
-    if (window.performance.getEntriesByType("paint").length) {
-        return window.performance.getEntriesByType("paint")[1].startTime;
-    } else {
-        return null
-    }
+    if ("getEntriesByType" in performance) return Math.round(performance.getEntriesByType('paint')[1].startTime);
+
+    return false;
 }
 
 // Measure Dom Loading
@@ -40,11 +37,6 @@ BrowserAnalytics.prototype.getWindowLoadMetric = function () {
 // reference:https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings
 BrowserAnalytics.prototype.getTimeToFirstByteMetric = function () {
     return this.time.responseStart - this.time.navigationStart;
-}
-
-BrowserAnalytics.prototype.init = function () {
-    if (this.getFirstContentfulPaintMetric() === null || this.getFirstContentfulPaintMetric() === undefined) setTimeout(() => this.init(), 500);
-    else this.sendMetrics();
 }
 
 // Send Metrics with built-in fetch api
