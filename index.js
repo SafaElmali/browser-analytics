@@ -16,9 +16,10 @@ function BrowserAnalytics(options) {
 // Measure FCP (First Contentful Paint)
 // reference: https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming
 BrowserAnalytics.prototype.getFirstContentfulPaintMetric = function () {
-    if ("getEntriesByType" in performance) return Math.round(performance.getEntriesByType('paint')[1].startTime);
+    // if ("getEntriesByType" in performance) return Math.round(performance.getEntriesByType('paint')[1].startTime);
 
-    return false;
+    // return false;
+    throw new Error('Method not implemented.');
 }
 
 // Measure Dom Loading
@@ -51,7 +52,6 @@ BrowserAnalytics.prototype.sendMetrics = function () {
             ttfb: this.getTimeToFirstByteMetric(),
             wl: this.getWindowLoadMetric(),
             dl: this.getDomLoadMetric(),
-            fcp: this.getFirstContentfulPaintMetric()
         }),
     });
 }
