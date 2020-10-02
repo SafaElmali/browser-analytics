@@ -10,12 +10,11 @@
 </div>
 
 <h3>In Progress ⌛</h3>
-
+- [x] First Contentful Paint (FCP)
 
 <h3>Completed ✅ </h3>
 
 - [x] Time To First Byte
-- [x] First Contentful Paint (FCP)
 - [x] Dom Load 
 - [x] Window Load
 
