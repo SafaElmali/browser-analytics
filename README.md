@@ -10,7 +10,8 @@
 </div>
 
 <h3>In Progress ⌛</h3>
-- [x] First Contentful Paint (FCP)
+
+- [ ] First Contentful Paint (FCP)
 
 <h3>Completed ✅ </h3>
 
